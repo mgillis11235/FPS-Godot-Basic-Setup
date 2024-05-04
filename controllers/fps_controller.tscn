@@ -28,3 +28,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 [node name="ReflectionProbe" type="ReflectionProbe" parent="CameraController/Camera3D"]
 update_mode = 1
 enable_shadows = true
+
+[node name="InteractionRaycast" type="RayCast3D" parent="CameraController/Camera3D"]

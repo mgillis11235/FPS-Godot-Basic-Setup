@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b1yleqbb8tc7x"]
+[gd_scene load_steps=29 format=3 uid="uid://b1yleqbb8tc7x"]
 
 [ext_resource type="PackedScene" uid="uid://btv0a42cgxt8g" path="res://levels/WE_test.tscn" id="1_db21n"]
 [ext_resource type="Material" uid="uid://cn1gsy15bkaff" path="res://materials/grid.tres" id="2_x5xie"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bqjx5jf7t8ptb" path="res://textures/onion/The_Onion-Logo.wine.png" id="7_ygldl"]
 [ext_resource type="FontFile" uid="uid://cv85topwa4oul" path="res://font/joystix monospace.otf" id="8_jk64u"]
 [ext_resource type="PackedScene" uid="uid://8j6r4c0yrtnb" path="res://models/basketball.glb" id="9_3wnkn"]
+[ext_resource type="Texture2D" uid="uid://4vbmgdx2egjy" path="res://textures/WDL-logo@2x.png" id="9_e0424"]
 [ext_resource type="ArrayMesh" uid="uid://cergqjja5mw6w" path="res://models/voting_machine_usa_obj/voting_machine_02_obj.obj" id="10_anu6c"]
 [ext_resource type="PackedScene" uid="uid://b0mw3f0gppx8f" path="res://models/an_elderly_man.glb" id="11_e2fnu"]
 [ext_resource type="PackedScene" uid="uid://dlelmylfjrctb" path="res://models/us_flag_on_pole.glb" id="12_gbgfq"]
@@ -21,6 +22,23 @@ size = Vector3(20, 0.5, 20)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_oahyi"]
 data = PackedVector3Array(-10, 0.25, 10, 10, 0.25, 10, -10, -0.25, 10, 10, 0.25, 10, 10, -0.25, 10, -10, -0.25, 10, 10, 0.25, -10, -10, 0.25, -10, 10, -0.25, -10, -10, 0.25, -10, -10, -0.25, -10, 10, -0.25, -10, 10, 0.25, 10, 10, 0.25, -10, 10, -0.25, 10, 10, 0.25, -10, 10, -0.25, -10, 10, -0.25, 10, -10, 0.25, -10, -10, 0.25, 10, -10, -0.25, -10, -10, 0.25, 10, -10, -0.25, 10, -10, -0.25, -10, 10, 0.25, 10, -10, 0.25, 10, 10, 0.25, -10, -10, 0.25, 10, -10, 0.25, -10, 10, 0.25, -10, -10, -0.25, 10, 10, -0.25, 10, -10, -0.25, -10, 10, -0.25, 10, 10, -0.25, -10, -10, -0.25, -10)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0racc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xc4gq"]
+material = SubResource("ShaderMaterial_0racc")
+size = Vector3(2, 2, 2)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_vp4dy"]
+data = PackedVector3Array(-1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l5obu"]
+albedo_color = Color(0.027451, 0.105882, 0.278431, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_mvhe7"]
+material = SubResource("StandardMaterial3D_l5obu")
+text = "THANK YOU FOR VOTING!!!"
+font_size = 116
 
 [sub_resource type="Shader" id="Shader_cwof1"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.1.dev4's StandardMaterial3D.
@@ -80,30 +98,6 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0racc"]
-render_priority = 0
-shader = SubResource("Shader_cwof1")
-shader_parameter/albedo = Color(0.937255, 1, 0, 1)
-shader_parameter/point_size = 1.0
-shader_parameter/roughness = 0.5
-shader_parameter/metallic_texture_channel = null
-shader_parameter/specular = 0.5
-shader_parameter/metallic = 0.0
-shader_parameter/uv1_blend_sharpness = 1.0
-shader_parameter/uv1_scale = Vector3(0.5, 0.5, 0.5)
-shader_parameter/uv1_offset = Vector3(0.5, 0.5, 0.5)
-shader_parameter/uv2_scale = Vector3(1, 1, 1)
-shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/texture_albedo = ExtResource("3_yfwkt")
-shader_parameter/texture_roughness = ExtResource("3_yfwkt")
-
-[sub_resource type="BoxMesh" id="BoxMesh_xc4gq"]
-material = SubResource("ShaderMaterial_0racc")
-size = Vector3(2, 2, 2)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_vp4dy"]
-data = PackedVector3Array(-1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_62u37"]
 render_priority = 0
 shader = SubResource("Shader_cwof1")
@@ -143,7 +137,7 @@ font_size = 127
 [node name="WorldEnvironment" parent="." instance=ExtResource("1_db21n")]
 
 [node name="Floor" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 3.52478)
 mesh = SubResource("BoxMesh_gd0ev")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
@@ -160,21 +154,35 @@ mesh = SubResource("BoxMesh_gd0ev")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_oahyi")
 
-[node name="Box" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -5)
-visible = false
+[node name="Back Wall" type="MeshInstance3D" parent="."]
+transform = Transform3D(10.5, 0, 0, 0, 5, 0, 0, 0, 0.529, 0.746146, 3.42423, -11.8894)
 mesh = SubResource("BoxMesh_xc4gq")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Box"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Back Wall"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Box/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Back Wall/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.625992, -0.19285, 1.08207)
 shape = SubResource("ConcavePolygonShape3D_vp4dy")
+
+[node name="Middle School Logo" type="Sprite3D" parent="Back Wall"]
+transform = Transform3D(0.0785495, 0, 0.012569, 0, 0.2, 0, -0.298628, 0, 1.86627, 0.000712208, -0.168072, 3.221)
+texture = ExtResource("9_e0424")
+
+[node name="Label" type="Label" parent="Back Wall/Middle School Logo"]
+visible = false
+offset_right = 223.0
+offset_bottom = 23.0
+text = "VOTING 2024 SIMULATOR 3D"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Back Wall/Middle School Logo"]
+transform = Transform3D(1, 0, 1.32312e-07, 0, 1, 0, -8.5758e-08, 0, 1, 3.42436, -1.79506, 1.41619)
+mesh = SubResource("TextMesh_mvhe7")
 
 [node name="Ramp" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0, 0)
 visible = false
 mesh = SubResource("PrismMesh_rutao")
-skeleton = NodePath("../Box")
+skeleton = NodePath("../Back Wall")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ramp"]
 
@@ -188,13 +196,13 @@ stream = ExtResource("5_8bw7o")
 autoplay = true
 
 [node name="Hoop 1" parent="." instance=ExtResource("6_24yj5")]
-transform = Transform3D(-0.051447, 0, 0.998676, 0, 1, 0, -0.998676, 0, -0.051447, -2.75148, 1.68353, 7.26725)
+transform = Transform3D(-0.051447, 0, 0.998676, 0, 1, 0, -0.998676, 0, -0.051447, -2.75148, 1.68353, 10.5525)
 
 [node name="Hoop 2" parent="." instance=ExtResource("6_24yj5")]
 transform = Transform3D(-0.00436353, 0, -0.999992, 0, 1, 0, 0.999994, 0, -0.00436338, -3.47526, 1.81743, -7.07474)
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.200497, 0, -0.979694, 0, 1, 0, 0.979694, 0, 0.200497, 15.249, 5.63518, 0.839499)
+transform = Transform3D(0.200497, 0, -0.979694, 0, 1, 0, 0.979694, 0, 0.200497, 12.7766, 5.0692, 2.29473)
 texture = ExtResource("7_ygldl")
 
 [node name="Label" type="Label" parent="Sprite3D"]
@@ -203,21 +211,18 @@ offset_bottom = 23.0
 text = "VOTING 2024 SIMULATOR 3D"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Sprite3D"]
-transform = Transform3D(0.999999, 0, 4.4251e-08, 0, 1, 0, -5.52116e-08, 0, 0.999999, -0.695012, -2.90677, 1.15162)
+transform = Transform3D(0.999999, 0, 6.48638e-08, 0, 1, 0, -5.25186e-08, 0, 0.999999, -0.695011, -2.90677, 1.15162)
 mesh = SubResource("TextMesh_qx0sb")
 
-[node name="Middle School Logo" type="Sprite3D" parent="."]
-transform = Transform3D(0.200497, 0, -0.979694, 0, 1, 0, 0.979694, 0, 0.200497, 15.249, 5.63518, 0.839499)
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(0.154105, 0, -0.933302, 0, 0.879627, 0, 0.75301, 0, 0.191003, 12.5688, 5.0692, -0.983411)
+visible = false
 texture = ExtResource("7_ygldl")
 
-[node name="Label" type="Label" parent="Middle School Logo"]
+[node name="Label" type="Label" parent="Sprite3D2"]
 offset_right = 223.0
 offset_bottom = 23.0
 text = "VOTING 2024 SIMULATOR 3D"
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Middle School Logo"]
-transform = Transform3D(0.999999, 0, 4.4251e-08, 0, 1, 0, -5.52116e-08, 0, 0.999999, -0.695012, -2.90677, 1.15162)
-mesh = SubResource("TextMesh_qx0sb")
 
 [node name="Pile of Basketballs" parent="." instance=ExtResource("9_3wnkn")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -7.74396, 0.662778, 1.39787)
@@ -267,3 +272,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.70064, 1.39568, 4.90424)
 
 [node name="AuxScene" parent="." instance=ExtResource("14_202o1")]
 transform = Transform3D(-0.0449988, -0.000326731, -1.80141e-06, 3.7463e-11, -0.000248106, 0.0449993, -0.000326735, 0.0449981, 0.0002481, -7.39733, 1.51387, -7.10185)
+
+[node name="Back Wall2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-10.4999, 0, -0.00267742, 0, 5, 0, 0.0531434, 0, -0.528993, 0.241412, 4.50968, 13.9721)
+mesh = SubResource("BoxMesh_xc4gq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Back Wall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Back Wall2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.625992, -0.19285, 1.08207)
+shape = SubResource("ConcavePolygonShape3D_vp4dy")
+
+[node name="Middle School Logo" type="Sprite3D" parent="Back Wall2"]
+transform = Transform3D(0.0785495, 0, 0.012569, 0, 0.2, 0, -0.298628, 0, 1.86627, 0.000712208, -0.168072, 3.6729)
+visible = false
+texture = ExtResource("9_e0424")
+
+[node name="Label" type="Label" parent="Back Wall2/Middle School Logo"]
+offset_right = 223.0
+offset_bottom = 23.0
+text = "VOTING 2024 SIMULATOR 3D"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Back Wall2/Middle School Logo"]
+transform = Transform3D(0.999999, 0, 1.08829e-07, 0, 1, 0, -1.01221e-07, 0, 0.999999, 0.398282, -1.14195, 2.06468)
+mesh = SubResource("TextMesh_mvhe7")
