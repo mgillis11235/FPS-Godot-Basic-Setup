@@ -1,9 +1,19 @@
-[gd_scene load_steps=14 format=3 uid="uid://b1yleqbb8tc7x"]
+[gd_scene load_steps=26 format=3 uid="uid://b1yleqbb8tc7x"]
 
 [ext_resource type="PackedScene" uid="uid://btv0a42cgxt8g" path="res://levels/WE_test.tscn" id="1_db21n"]
 [ext_resource type="Material" uid="uid://cn1gsy15bkaff" path="res://materials/grid.tres" id="2_x5xie"]
 [ext_resource type="Texture2D" uid="uid://ivvpsi314b34" path="res://textures/grid.jpg" id="3_yfwkt"]
 [ext_resource type="PackedScene" uid="uid://c3ffql15mo0aj" path="res://controllers/fps_controller.tscn" id="4_liofc"]
+[ext_resource type="AudioStream" uid="uid://bgukwb13tmaox" path="res://audio/HailToTheChief.mp3" id="5_8bw7o"]
+[ext_resource type="PackedScene" uid="uid://3jli7ayuoby7" path="res://models/basketball_hoop.glb" id="6_24yj5"]
+[ext_resource type="Texture2D" uid="uid://bqjx5jf7t8ptb" path="res://textures/onion/The_Onion-Logo.wine.png" id="7_ygldl"]
+[ext_resource type="FontFile" uid="uid://cv85topwa4oul" path="res://font/joystix monospace.otf" id="8_jk64u"]
+[ext_resource type="PackedScene" uid="uid://8j6r4c0yrtnb" path="res://models/basketball.glb" id="9_3wnkn"]
+[ext_resource type="ArrayMesh" uid="uid://cergqjja5mw6w" path="res://models/voting_machine_usa_obj/voting_machine_02_obj.obj" id="10_anu6c"]
+[ext_resource type="PackedScene" uid="uid://b0mw3f0gppx8f" path="res://models/an_elderly_man.glb" id="11_e2fnu"]
+[ext_resource type="PackedScene" uid="uid://dlelmylfjrctb" path="res://models/us_flag_on_pole.glb" id="12_gbgfq"]
+[ext_resource type="PackedScene" uid="uid://bwvcxk0kgn8j7" path="res://models/nuclear_bomb_stylized_lowpoly(1).glb" id="13_lokba"]
+[ext_resource type="PackedScene" uid="uid://bjyk2wy4hkwcg" path="res://models/suicide booth/ImageToStl.com_uploads_files_3252242_suicide_booth_001.gltf" id="14_202o1"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_gd0ev"]
 material = ExtResource("2_x5xie")
@@ -76,7 +86,7 @@ shader = SubResource("Shader_cwof1")
 shader_parameter/albedo = Color(0.937255, 1, 0, 1)
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 0.5
-shader_parameter/metallic_texture_channel = Plane(1, 0, 0, 0)
+shader_parameter/metallic_texture_channel = null
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 0.0
 shader_parameter/uv1_blend_sharpness = 1.0
@@ -100,7 +110,7 @@ shader = SubResource("Shader_cwof1")
 shader_parameter/albedo = Color(0, 0.67451, 0, 1)
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 0.5
-shader_parameter/metallic_texture_channel = Plane(1, 0, 0, 0)
+shader_parameter/metallic_texture_channel = null
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 0.0
 shader_parameter/uv1_blend_sharpness = 1.0
@@ -119,6 +129,15 @@ size = Vector3(8, 2, 2)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_j6kcl"]
 data = PackedVector3Array(-4, 1, 1, 4, -1, 1, -4, -1, 1, -4, 1, -1, -4, -1, -1, 4, -1, -1, -4, 1, 1, -4, 1, -1, 4, -1, 1, -4, 1, -1, 4, -1, -1, 4, -1, 1, -4, 1, -1, -4, 1, 1, -4, -1, -1, -4, 1, 1, -4, -1, 1, -4, -1, -1, -4, -1, 1, 4, -1, 1, -4, -1, -1, 4, -1, 1, 4, -1, -1, -4, -1, -1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sos5l"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_qx0sb"]
+material = SubResource("StandardMaterial3D_sos5l")
+text = "VOTING SIMULATOR 3D"
+font = ExtResource("8_jk64u")
+font_size = 127
+
 [node name="Node3D" type="Node3D"]
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("1_db21n")]
@@ -132,8 +151,18 @@ mesh = SubResource("BoxMesh_gd0ev")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_oahyi")
 
+[node name="Floor2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+mesh = SubResource("BoxMesh_gd0ev")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_oahyi")
+
 [node name="Box" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -5)
+visible = false
 mesh = SubResource("BoxMesh_xc4gq")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Box"]
@@ -143,6 +172,7 @@ shape = SubResource("ConcavePolygonShape3D_vp4dy")
 
 [node name="Ramp" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0, 0)
+visible = false
 mesh = SubResource("PrismMesh_rutao")
 skeleton = NodePath("../Box")
 
@@ -152,3 +182,88 @@ skeleton = NodePath("../Box")
 shape = SubResource("ConcavePolygonShape3D_j6kcl")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("4_liofc")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_8bw7o")
+autoplay = true
+
+[node name="Hoop 1" parent="." instance=ExtResource("6_24yj5")]
+transform = Transform3D(-0.051447, 0, 0.998676, 0, 1, 0, -0.998676, 0, -0.051447, -2.75148, 1.68353, 7.26725)
+
+[node name="Hoop 2" parent="." instance=ExtResource("6_24yj5")]
+transform = Transform3D(-0.00436353, 0, -0.999992, 0, 1, 0, 0.999994, 0, -0.00436338, -3.47526, 1.81743, -7.07474)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.200497, 0, -0.979694, 0, 1, 0, 0.979694, 0, 0.200497, 15.249, 5.63518, 0.839499)
+texture = ExtResource("7_ygldl")
+
+[node name="Label" type="Label" parent="Sprite3D"]
+offset_right = 223.0
+offset_bottom = 23.0
+text = "VOTING 2024 SIMULATOR 3D"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Sprite3D"]
+transform = Transform3D(0.999999, 0, 4.4251e-08, 0, 1, 0, -5.52116e-08, 0, 0.999999, -0.695012, -2.90677, 1.15162)
+mesh = SubResource("TextMesh_qx0sb")
+
+[node name="Middle School Logo" type="Sprite3D" parent="."]
+transform = Transform3D(0.200497, 0, -0.979694, 0, 1, 0, 0.979694, 0, 0.200497, 15.249, 5.63518, 0.839499)
+texture = ExtResource("7_ygldl")
+
+[node name="Label" type="Label" parent="Middle School Logo"]
+offset_right = 223.0
+offset_bottom = 23.0
+text = "VOTING 2024 SIMULATOR 3D"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Middle School Logo"]
+transform = Transform3D(0.999999, 0, 4.4251e-08, 0, 1, 0, -5.52116e-08, 0, 0.999999, -0.695012, -2.90677, 1.15162)
+mesh = SubResource("TextMesh_qx0sb")
+
+[node name="Pile of Basketballs" parent="." instance=ExtResource("9_3wnkn")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -7.74396, 0.662778, 1.39787)
+
+[node name="Sketchfab_Scene" parent="Pile of Basketballs" instance=ExtResource("9_3wnkn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.795614, -1.79889, 0.619616)
+
+[node name="Sketchfab_Scene2" parent="Pile of Basketballs" instance=ExtResource("9_3wnkn")]
+
+[node name="Sketchfab_Scene3" parent="Pile of Basketballs" instance=ExtResource("9_3wnkn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.758187, -1.68761, 1.49139)
+
+[node name="Sketchfab_Scene4" parent="Pile of Basketballs" instance=ExtResource("9_3wnkn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.807119, -1.87512, -1.06813)
+
+[node name="Sketchfab_Scene5" parent="Pile of Basketballs" instance=ExtResource("9_3wnkn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.289453, -0.718797, -1.9485)
+
+[node name="Sketchfab_Scene5" parent="Pile of Basketballs/Sketchfab_Scene5" instance=ExtResource("9_3wnkn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27365, -0.562537, 2.1118)
+
+[node name="VotingMachine02Obj" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.00290129, 0, 0.0197884, 0, 0.02, 0, -0.0197884, 0, -0.00290129, -8.27001, 1.04679, -4.80987)
+mesh = ExtResource("10_anu6c")
+
+[node name="VotingMachine02Obj2" type="MeshInstance3D" parent="VotingMachine02Obj"]
+transform = Transform3D(1, 0, 8.13543e-10, 0, 1, 0, -1.91775e-09, 0, 1, -111.444, 0.334133, -17.6688)
+mesh = ExtResource("10_anu6c")
+skeleton = NodePath("../..")
+
+[node name="VotingMachine02Obj3" type="MeshInstance3D" parent="VotingMachine02Obj"]
+transform = Transform3D(1, 0, 8.13543e-10, 0, 1, 0, -1.91775e-09, 0, 1, -212.934, 0.668346, -33.7462)
+mesh = ExtResource("10_anu6c")
+skeleton = NodePath("../..")
+
+[node name="Elderly Man" parent="." instance=ExtResource("11_e2fnu")]
+transform = Transform3D(0.364121, 0, 1.14342, 0, 1.2, 0, -1.14342, 0, 0.364121, -7.78383, -0.0933135, 5.60337)
+
+[node name="Flag 1" parent="." instance=ExtResource("12_gbgfq")]
+transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, -7.28236, -4.76837e-07, 4.5816)
+
+[node name="Flag 2" parent="Flag 1" instance=ExtResource("12_gbgfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15408, 4.76837e-07, -11.8941)
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("13_lokba")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.70064, 1.39568, 4.90424)
+
+[node name="AuxScene" parent="." instance=ExtResource("14_202o1")]
+transform = Transform3D(-0.0449988, -0.000326731, -1.80141e-06, 3.7463e-11, -0.000248106, 0.0449993, -0.000326735, 0.0449981, 0.0002481, -7.39733, 1.51387, -7.10185)

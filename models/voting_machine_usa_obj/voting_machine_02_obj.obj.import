@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cergqjja5mw6w"
+path="res://.godot/imported/voting_machine_02_obj.obj-b0adf9a705e0b8d9382f1d16aee97417.mesh"
+
+[deps]
+
+files=["res://.godot/imported/voting_machine_02_obj.obj-b0adf9a705e0b8d9382f1d16aee97417.mesh"]
+
+source_file="res://models/voting_machine_usa_obj/voting_machine_02_obj.obj"
+dest_files=["res://.godot/imported/voting_machine_02_obj.obj-b0adf9a705e0b8d9382f1d16aee97417.mesh", "res://.godot/imported/voting_machine_02_obj.obj-b0adf9a705e0b8d9382f1d16aee97417.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

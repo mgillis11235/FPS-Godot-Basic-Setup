@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bx63hcm465q2"
+path="res://.godot/imported/uploads_files_3252242_suicide_booth_001.obj-3f0fde5b8da8090c0a7d006c06d14c87.mesh"
+
+[deps]
+
+files=["res://.godot/imported/uploads_files_3252242_suicide_booth_001.obj-3f0fde5b8da8090c0a7d006c06d14c87.mesh"]
+
+source_file="res://models/uploads_files_3252242_suicide_booth_001.obj"
+dest_files=["res://.godot/imported/uploads_files_3252242_suicide_booth_001.obj-3f0fde5b8da8090c0a7d006c06d14c87.mesh", "res://.godot/imported/uploads_files_3252242_suicide_booth_001.obj-3f0fde5b8da8090c0a7d006c06d14c87.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

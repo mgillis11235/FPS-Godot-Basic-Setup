@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cn1gsy15bkaff"]
 
-[ext_resource type="Texture2D" uid="uid://ivvpsi314b34" path="res://textures/grid.jpg" id="1_57ppx"]
+[ext_resource type="Texture2D" uid="uid://cmar2mgrx1gba" path="res://textures/textures/rectangular_parquet_diff_4k.jpg" id="1_c8kko"]
 
 [sub_resource type="Shader" id="Shader_cwof1"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.1.dev4's StandardMaterial3D.
@@ -63,16 +63,16 @@ void fragment() {
 [resource]
 render_priority = 0
 shader = SubResource("Shader_cwof1")
-shader_parameter/albedo = Color(0, 0, 0, 1)
+shader_parameter/albedo = Color(1, 0.482353, 0.156863, 1)
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 0.5
-shader_parameter/metallic_texture_channel = Plane(1, 0, 0, 0)
-shader_parameter/specular = 0.5
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 2.08165e-12
 shader_parameter/metallic = 0.0
 shader_parameter/uv1_blend_sharpness = 1.0
 shader_parameter/uv1_scale = Vector3(0.5, 0.5, 0.5)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/texture_albedo = ExtResource("1_57ppx")
-shader_parameter/texture_roughness = ExtResource("1_57ppx")
+shader_parameter/texture_albedo = ExtResource("1_c8kko")
+shader_parameter/texture_roughness = ExtResource("1_c8kko")
