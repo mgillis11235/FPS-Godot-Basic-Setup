@@ -1,0 +1,11 @@
+Model Information:
+* title:	Folding Table and Chair
+* source:	https://sketchfab.com/3d-models/folding-table-and-chair-d807a5c064be4a9e80e46284973b1454
+* author:	Full Barrel Productions (https://sketchfab.com/Full_Barrel_Production)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Folding Table and Chair" (https://sketchfab.com/3d-models/folding-table-and-chair-d807a5c064be4a9e80e46284973b1454) by Full Barrel Productions (https://sketchfab.com/Full_Barrel_Production) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

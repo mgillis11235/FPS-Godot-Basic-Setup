@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b1yleqbb8tc7x"]
+[gd_scene load_steps=36 format=3 uid="uid://b1yleqbb8tc7x"]
 
 [ext_resource type="PackedScene" uid="uid://btv0a42cgxt8g" path="res://levels/WE_test.tscn" id="1_db21n"]
 [ext_resource type="Material" uid="uid://cn1gsy15bkaff" path="res://materials/grid.tres" id="2_x5xie"]
@@ -15,6 +15,12 @@
 [ext_resource type="PackedScene" uid="uid://dlelmylfjrctb" path="res://models/us_flag_on_pole.glb" id="12_gbgfq"]
 [ext_resource type="PackedScene" uid="uid://bwvcxk0kgn8j7" path="res://models/nuclear_bomb_stylized_lowpoly(1).glb" id="13_lokba"]
 [ext_resource type="PackedScene" uid="uid://bjyk2wy4hkwcg" path="res://models/suicide booth/ImageToStl.com_uploads_files_3252242_suicide_booth_001.gltf" id="14_202o1"]
+[ext_resource type="PackedScene" uid="uid://kbvcfopbq63k" path="res://models/folding_table_and_chair/scene.gltf" id="16_71mq7"]
+[ext_resource type="PackedScene" uid="uid://c8pjipurn6e7i" path="res://models/red_button.glb" id="17_ajpe6"]
+[ext_resource type="Texture2D" uid="uid://dg8lv6dr1apcp" path="res://models/I_Voted_Sticker_1.webp" id="17_dgsfm"]
+[ext_resource type="Script" path="res://interactable/interactable.gd" id="17_fxta7"]
+[ext_resource type="PackedScene" uid="uid://byptqf70bsq7h" path="res://models/fire_escape__exit_doors/scene.gltf" id="19_ml0c4"]
+[ext_resource type="Script" path="res://levels/UI.gd" id="20_mutox"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_gd0ev"]
 material = ExtResource("2_x5xie")
@@ -123,6 +129,8 @@ size = Vector3(8, 2, 2)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_j6kcl"]
 data = PackedVector3Array(-4, 1, 1, 4, -1, 1, -4, -1, 1, -4, 1, -1, -4, -1, -1, 4, -1, -1, -4, 1, 1, -4, 1, -1, 4, -1, 1, -4, 1, -1, 4, -1, -1, 4, -1, 1, -4, 1, -1, -4, 1, 1, -4, -1, -1, -4, 1, 1, -4, -1, 1, -4, -1, -1, -4, -1, 1, 4, -1, 1, -4, -1, -1, 4, -1, 1, 4, -1, -1, -4, -1, -1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_m0toc"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sos5l"]
 albedo_color = Color(0, 0, 0, 1)
 
@@ -137,7 +145,7 @@ font_size = 127
 [node name="WorldEnvironment" parent="." instance=ExtResource("1_db21n")]
 
 [node name="Floor" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 3.52478)
+transform = Transform3D(1.72847, 0, 0, 0, 1.72847, 0, 0, 0, 1.72847, 0, -0.25, 3.52478)
 mesh = SubResource("BoxMesh_gd0ev")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
@@ -155,7 +163,7 @@ mesh = SubResource("BoxMesh_gd0ev")
 shape = SubResource("ConcavePolygonShape3D_oahyi")
 
 [node name="Back Wall" type="MeshInstance3D" parent="."]
-transform = Transform3D(10.5, 0, 0, 0, 5, 0, 0, 0, 0.529, 0.746146, 3.42423, -11.8894)
+transform = Transform3D(12.4701, 0, 0, 0, 5, 0, 0, 0, 0.529, 0.746146, 3.42423, -11.8894)
 mesh = SubResource("BoxMesh_xc4gq")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Back Wall"]
@@ -165,7 +173,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.625992, -0.19285, 1.08207)
 shape = SubResource("ConcavePolygonShape3D_vp4dy")
 
 [node name="Middle School Logo" type="Sprite3D" parent="Back Wall"]
-transform = Transform3D(0.0785495, 0, 0.012569, 0, 0.2, 0, -0.298628, 0, 1.86627, 0.000712208, -0.168072, 3.221)
+transform = Transform3D(0.0785495, 0, 0.012569, 0, 0.2, 0, -0.298628, 0, 1.86627, 0.00071213, -0.102468, 4.05263)
 texture = ExtResource("9_e0424")
 
 [node name="Label" type="Label" parent="Back Wall/Middle School Logo"]
@@ -190,6 +198,7 @@ skeleton = NodePath("../Back Wall")
 shape = SubResource("ConcavePolygonShape3D_j6kcl")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("4_liofc")]
+transform = Transform3D(-0.981192, 0, -0.193036, 0, 1, 0, 0.193036, 0, -0.981192, 0, 0, -0.15181)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_8bw7o")
@@ -198,11 +207,23 @@ autoplay = true
 [node name="Hoop 1" parent="." instance=ExtResource("6_24yj5")]
 transform = Transform3D(-0.051447, 0, 0.998676, 0, 1, 0, -0.998676, 0, -0.051447, -2.75148, 1.68353, 10.5525)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Hoop 1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hoop 1/StaticBody3D"]
+transform = Transform3D(1, 0, -3.37399e-09, 0, 1, 0, 1.90712e-09, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_m0toc")
+
 [node name="Hoop 2" parent="." instance=ExtResource("6_24yj5")]
 transform = Transform3D(-0.00436353, 0, -0.999992, 0, 1, 0, 0.999994, 0, -0.00436338, -3.47526, 1.81743, -7.07474)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Hoop 2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hoop 2/StaticBody3D"]
+transform = Transform3D(1, 0, -3.37399e-09, 0, 1, 0, 1.90712e-09, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_m0toc")
+
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.200497, 0, -0.979694, 0, 1, 0, 0.979694, 0, 0.200497, 12.7766, 5.0692, 2.29473)
+transform = Transform3D(0.200497, 0, -0.979694, 0, 1, 0, 0.979694, 0, 0.200497, 12.9872, 5.0692, 0.857747)
 texture = ExtResource("7_ygldl")
 
 [node name="Label" type="Label" parent="Sprite3D"]
@@ -211,7 +232,7 @@ offset_bottom = 23.0
 text = "VOTING 2024 SIMULATOR 3D"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Sprite3D"]
-transform = Transform3D(0.999999, 0, 6.48638e-08, 0, 1, 0, -5.25186e-08, 0, 0.999999, -0.695011, -2.90677, 1.15162)
+transform = Transform3D(0.970446, 0, -0.241312, 0, 1, 0, 0.241312, 0, 0.970447, -0.695011, -2.90677, 1.15162)
 mesh = SubResource("TextMesh_qx0sb")
 
 [node name="Sprite3D2" type="Sprite3D" parent="."]
@@ -244,37 +265,88 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.289453, -0.718797, -1.9485
 [node name="Sketchfab_Scene5" parent="Pile of Basketballs/Sketchfab_Scene5" instance=ExtResource("9_3wnkn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27365, -0.562537, 2.1118)
 
-[node name="VotingMachine02Obj" type="MeshInstance3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="Pile of Basketballs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.395994, -1.41379, -0.516191)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pile of Basketballs/StaticBody3D"]
+transform = Transform3D(1, 0, -3.37399e-09, 0, 1, 0, 1.90712e-09, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_m0toc")
+
+[node name="VotingMachine 1" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.00290129, 0, 0.0197884, 0, 0.02, 0, -0.0197884, 0, -0.00290129, -8.27001, 1.04679, -4.80987)
 mesh = ExtResource("10_anu6c")
 
-[node name="VotingMachine02Obj2" type="MeshInstance3D" parent="VotingMachine02Obj"]
-transform = Transform3D(1, 0, 8.13543e-10, 0, 1, 0, -1.91775e-09, 0, 1, -111.444, 0.334133, -17.6688)
-mesh = ExtResource("10_anu6c")
-skeleton = NodePath("../..")
+[node name="StaticBody3D" type="StaticBody3D" parent="VotingMachine 1"]
+transform = Transform3D(1, 0, -1.88744e-08, 0, 1, 0, 1.38451e-08, 0, 1, -0.154053, 12.7235, 11.8941)
 
-[node name="VotingMachine02Obj3" type="MeshInstance3D" parent="VotingMachine02Obj"]
-transform = Transform3D(1, 0, 8.13543e-10, 0, 1, 0, -1.91775e-09, 0, 1, -212.934, 0.668346, -33.7462)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VotingMachine 1/StaticBody3D"]
+transform = Transform3D(1, 0, -3.37399e-09, 0, 1, 0, 1.90712e-09, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_m0toc")
+
+[node name="VotingMachine 2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.00290129, 0, 0.0197884, 0, 0.02, 0, -0.0197884, 0, -0.00290129, -8.32001, 1.06016, -0.498339)
 mesh = ExtResource("10_anu6c")
-skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="VotingMachine 2"]
+transform = Transform3D(1, 0, -1.88744e-08, 0, 1, 0, 1.38451e-08, 0, 1, -0.154083, 19.6628, 11.8941)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VotingMachine 2/StaticBody3D"]
+transform = Transform3D(1, 0, -3.37399e-09, 0, 1, 0, 1.90712e-09, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_m0toc")
+
+[node name="VotingMachine 3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.00290129, 0, 0.0197884, 0, 0.02, 0, -0.0197884, 0, -0.00290129, -8.29632, 1.05347, -2.55331)
+mesh = ExtResource("10_anu6c")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="VotingMachine 3"]
+transform = Transform3D(1, 0, -2.70101e-08, 0, 1, 0, 1.38451e-08, 0, 1, 111.29, 19.3374, 29.5629)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VotingMachine 3/StaticBody3D"]
+transform = Transform3D(1, 0, -3.37399e-09, 0, 1, 0, 1.90712e-09, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_m0toc")
 
 [node name="Elderly Man" parent="." instance=ExtResource("11_e2fnu")]
 transform = Transform3D(0.364121, 0, 1.14342, 0, 1.2, 0, -1.14342, 0, 0.364121, -7.78383, -0.0933135, 5.60337)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Elderly Man"]
+transform = Transform3D(1, 0, 8.48309e-09, 0, 1, 0, 5.41655e-09, 0, 1, 0.439101, 0.49749, 1.30005)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Elderly Man/StaticBody3D"]
+transform = Transform3D(1, 0, -3.37399e-09, 0, 1, 0, 1.90712e-09, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_m0toc")
+
 [node name="Flag 1" parent="." instance=ExtResource("12_gbgfq")]
 transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, -7.28236, -4.76837e-07, 4.5816)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Flag 1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.76837e-07, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Flag 1/StaticBody3D"]
+transform = Transform3D(1, 0, -3.37399e-09, 0, 1, 0, 1.90712e-09, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_m0toc")
 
 [node name="Flag 2" parent="Flag 1" instance=ExtResource("12_gbgfq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15408, 4.76837e-07, -11.8941)
 
-[node name="Sketchfab_Scene" parent="." instance=ExtResource("13_lokba")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.70064, 1.39568, 4.90424)
+[node name="StaticBody3D" type="StaticBody3D" parent="Flag 1/Flag 2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.154079, 0.478334, 11.8941)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Flag 1/Flag 2/StaticBody3D"]
+transform = Transform3D(1, 0, -3.37399e-09, 0, 1, 0, 1.90712e-09, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_m0toc")
 
 [node name="AuxScene" parent="." instance=ExtResource("14_202o1")]
 transform = Transform3D(-0.0449988, -0.000326731, -1.80141e-06, 3.7463e-11, -0.000248106, 0.0449993, -0.000326735, 0.0449981, 0.0002481, -7.39733, 1.51387, -7.10185)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="AuxScene"]
+transform = Transform3D(1, -1.14346e-09, -6.16916e-12, 1.35207e-10, 1, -4.63108e-11, 7.78697e-13, -9.42801e-10, 1, 0, -0.0264893, 4.80272)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AuxScene/StaticBody3D"]
+transform = Transform3D(1, 0, -3.37399e-09, 0, 1, 0, 1.90712e-09, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_m0toc")
+
 [node name="Back Wall2" type="MeshInstance3D" parent="."]
-transform = Transform3D(-10.4999, 0, -0.00267742, 0, 5, 0, 0.0531434, 0, -0.528993, 0.241412, 4.50968, 13.9721)
+transform = Transform3D(-15.2115, 0, -0.00374626, 0, 5.63521, 0, 0.0769907, 0, -0.740171, 0.241412, 3.79602, 13.9721)
 mesh = SubResource("BoxMesh_xc4gq")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Back Wall2"]
@@ -296,3 +368,106 @@ text = "VOTING 2024 SIMULATOR 3D"
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Back Wall2/Middle School Logo"]
 transform = Transform3D(0.999999, 0, 1.08829e-07, 0, 1, 0, -1.01221e-07, 0, 0.999999, 0.398282, -1.14195, 2.06468)
 mesh = SubResource("TextMesh_mvhe7")
+
+[node name="Back Wall3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.29767, 0, 0.482888, 0, 4.73677, 0, -14.6383, 0, -0.0428077, 14.739, 4.34217, 1.50534)
+mesh = SubResource("BoxMesh_xc4gq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Back Wall3"]
+transform = Transform3D(1, 0, 7.79986e-11, 0, 1, 0, 3.43849e-07, 0, 1, 0, 0, 0)
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Back Wall3/StaticBody3D"]
+transform = Transform3D(1, 0, -4.57055e-11, 0, 1, 0, -1.05395e-07, 0, 1, 0.625992, -0.19285, 1.08207)
+shape = SubResource("ConcavePolygonShape3D_vp4dy")
+
+[node name="Middle School Logo" type="Sprite3D" parent="Back Wall3"]
+transform = Transform3D(0.0785495, 0, 0.012569, 0, 0.2, 0, -0.298628, 0, 1.86627, 0.000712208, -0.168072, 3.6729)
+visible = false
+texture = ExtResource("9_e0424")
+
+[node name="Label" type="Label" parent="Back Wall3/Middle School Logo"]
+offset_right = 223.0
+offset_bottom = 23.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Back Wall3/Middle School Logo"]
+transform = Transform3D(0.999999, 0, 1.08829e-07, 0, 1, 0, -1.01221e-07, 0, 0.999999, 0.398282, -1.14195, 2.06468)
+mesh = SubResource("TextMesh_mvhe7")
+
+[node name="Table" parent="." instance=ExtResource("16_71mq7")]
+transform = Transform3D(0.0256361, 0, 0.999671, 0, 1, 0, -0.999671, 0, 0.0256361, -8.23374, 0.314806, 7.65912)
+
+[node name="Sprite3D" type="Sprite3D" parent="Table"]
+transform = Transform3D(0.059041, -0.0106621, 0.000689039, -0.000709233, -5.01209e-05, 0.0599958, -0.0106607, -0.059045, -0.000175351, 0.227663, 0.793735, -0.215955)
+texture = ExtResource("17_dgsfm")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Table"]
+transform = Transform3D(0.0494579, 0.0339637, 0.000613035, -0.000709233, -5.01209e-05, 0.0599958, 0.0339619, -0.0494617, 0.000360155, -0.219785, 0.793735, -0.204483)
+texture = ExtResource("17_dgsfm")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Table"]
+transform = Transform3D(0.0494579, 0.0339637, 0.000613035, -0.000709233, -5.01209e-05, 0.0599958, 0.0339619, -0.0494617, 0.000360155, -0.441261, 0.767858, 0.234091)
+texture = ExtResource("17_dgsfm")
+
+[node name="Sprite3D" type="Sprite3D" parent="Table/Sprite3D3"]
+transform = Transform3D(0.059041, -0.0106621, 0.000689043, -0.000709232, -5.01213e-05, 0.0599958, -0.0106607, -0.059045, -0.000175351, 0.22229, 1.01183, -0.425133)
+texture = ExtResource("17_dgsfm")
+
+[node name="Sprite3D4" type="Sprite3D" parent="Table"]
+transform = Transform3D(-0.0138363, 0.0583827, -0.000114791, -0.000709233, -5.01209e-05, 0.0599958, 0.0583785, 0.0138367, 0.000701674, 0.252983, 0.767858, 0.216284)
+texture = ExtResource("17_dgsfm")
+
+[node name="Sprite3D" type="Sprite3D" parent="Table/Sprite3D4"]
+transform = Transform3D(0.059041, -0.0106621, 0.000689043, -0.000709232, -5.01213e-05, 0.0599958, -0.0106607, -0.059045, -0.000175351, 0.22229, 1.01183, -0.425133)
+texture = ExtResource("17_dgsfm")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Table"]
+collision_layer = 2
+script = ExtResource("17_fxta7")
+
+[node name="Red Button" parent="." instance=ExtResource("17_ajpe6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02234, 0.236132, 7.59813)
+
+[node name="Sketchfab_Scene" parent="Red Button" instance=ExtResource("13_lokba")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0960076, 1.15955, -2.69389)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Red Button"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15408, -4.76837e-07, 11.8941)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Red Button/StaticBody3D"]
+transform = Transform3D(1, 0, -3.37399e-09, 0, 1, 0, 1.90712e-09, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_m0toc")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("19_ml0c4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8207, 0.182119, 4.07173)
+
+[node name="Sketchfab_Scene2" parent="." instance=ExtResource("19_ml0c4")]
+transform = Transform3D(0.110294, 0, -1.18829, 0, 1.22346, 0, 0.972411, 0, 0.134779, 11.7817, -0.234787, 13.1077)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("20_mutox")
+
+[node name="InteractionLabel" type="Label" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -538.0
+offset_top = -65.0
+offset_right = 124.0
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.74275, 1.74275)
+text = "Press E to Interact"
+horizontal_alignment = 1
