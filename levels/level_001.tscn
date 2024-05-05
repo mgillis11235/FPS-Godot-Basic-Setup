@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://b1yleqbb8tc7x"]
+[gd_scene load_steps=40 format=3 uid="uid://b1yleqbb8tc7x"]
 
 [ext_resource type="PackedScene" uid="uid://btv0a42cgxt8g" path="res://levels/WE_test.tscn" id="1_db21n"]
 [ext_resource type="Material" uid="uid://cn1gsy15bkaff" path="res://materials/grid.tres" id="2_x5xie"]
@@ -19,9 +19,11 @@
 [ext_resource type="PackedScene" uid="uid://bjyk2wy4hkwcg" path="res://models/suicide booth/ImageToStl.com_uploads_files_3252242_suicide_booth_001.gltf" id="14_202o1"]
 [ext_resource type="Texture2D" uid="uid://cmoq5310pa6bc" path="res://textures/lipstick_kiss.png" id="15_n0bh5"]
 [ext_resource type="PackedScene" uid="uid://kbvcfopbq63k" path="res://models/folding_table_and_chair/scene.gltf" id="16_71mq7"]
+[ext_resource type="PackedScene" uid="uid://cw7mguh1fecqb" path="res://levels/vfx_explosion.tscn" id="16_abcit"]
 [ext_resource type="PackedScene" uid="uid://c8pjipurn6e7i" path="res://models/red_button.glb" id="17_ajpe6"]
 [ext_resource type="Texture2D" uid="uid://dg8lv6dr1apcp" path="res://models/I_Voted_Sticker_1.webp" id="17_dgsfm"]
 [ext_resource type="Script" path="res://interactable/interactable.gd" id="17_fxta7"]
+[ext_resource type="AudioStream" uid="uid://dgvk7howdaahf" path="res://audio/explosion.mp3" id="17_whguf"]
 [ext_resource type="PackedScene" uid="uid://byptqf70bsq7h" path="res://models/fire_escape__exit_doors/scene.gltf" id="19_ml0c4"]
 [ext_resource type="Script" path="res://levels/UI.gd" id="20_mutox"]
 
@@ -228,6 +230,7 @@ transform = Transform3D(1, 0, -3.37399e-09, 0, 1, 0, 1.90712e-09, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_m0toc")
 
 [node name="Elderly_Man" parent="." instance=ExtResource("11_e2fnu")]
+unique_name_in_owner = true
 transform = Transform3D(0.364121, 0, 1.14342, 0, 1.2, 0, -1.14342, 0, 0.364121, -7.78383, 0.0216732, 5.60337)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Elderly_Man"]
@@ -262,6 +265,11 @@ texture = ExtResource("15_n0bh5")
 transform = Transform3D(0.00498906, 0, 0.00033076, 0, 0.00500001, 0, -0.00033076, 0, 0.00498905, -0.00160122, 1.6595, 0.136146)
 visible = false
 texture = ExtResource("15_n0bh5")
+
+[node name="explosion" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.303435, 0, 0.952852, 0, 1, 0, -0.952852, 0, 0.303435, -7.78383, 0.0216732, 5.60337)
+stream = ExtResource("17_whguf")
 
 [node name="Flag 1" parent="." instance=ExtResource("12_gbgfq")]
 transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, -7.28236, -4.76837e-07, 4.5816)
@@ -394,6 +402,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8207, 0.182119, 4.07173)
 
 [node name="Sketchfab_Scene2" parent="." instance=ExtResource("19_ml0c4")]
 transform = Transform3D(0.110294, 0, -1.18829, 0, 1.22346, 0, 0.972411, 0, 0.134779, 11.7817, -0.234787, 13.1077)
+
+[node name="explosion_vfx" parent="." instance=ExtResource("16_abcit")]
+transform = Transform3D(0.364121, 0, 1.14342, 0, 1.4068, 0, -1.14342, 0, 0.364121, -7.88297, 1.66525, 5.71422)
+script = null
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
