@@ -1,8 +1,7 @@
-[gd_scene load_steps=36 format=3 uid="uid://b1yleqbb8tc7x"]
+[gd_scene load_steps=31 format=3 uid="uid://b1yleqbb8tc7x"]
 
 [ext_resource type="PackedScene" uid="uid://btv0a42cgxt8g" path="res://levels/WE_test.tscn" id="1_db21n"]
 [ext_resource type="Material" uid="uid://cn1gsy15bkaff" path="res://materials/grid.tres" id="2_x5xie"]
-[ext_resource type="Texture2D" uid="uid://ivvpsi314b34" path="res://textures/grid.jpg" id="3_yfwkt"]
 [ext_resource type="PackedScene" uid="uid://c3ffql15mo0aj" path="res://controllers/fps_controller.tscn" id="4_liofc"]
 [ext_resource type="AudioStream" uid="uid://bgukwb13tmaox" path="res://audio/HailToTheChief.mp3" id="5_8bw7o"]
 [ext_resource type="PackedScene" uid="uid://3jli7ayuoby7" path="res://models/basketball_hoop.glb" id="6_24yj5"]
@@ -45,89 +44,6 @@ albedo_color = Color(0.027451, 0.105882, 0.278431, 1)
 material = SubResource("StandardMaterial3D_l5obu")
 text = "THANK YOU FOR VOTING!!!"
 font_size = 116
-
-[sub_resource type="Shader" id="Shader_cwof1"]
-code = "// NOTE: Shader automatically converted from Godot Engine 4.1.dev4's StandardMaterial3D.
-
-shader_type spatial;
-render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
-uniform vec4 albedo : source_color;
-uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
-uniform float point_size : hint_range(0,128);
-uniform float roughness : hint_range(0,1);
-uniform sampler2D texture_metallic : hint_default_white,filter_linear_mipmap,repeat_enable;
-uniform vec4 metallic_texture_channel;
-uniform sampler2D texture_roughness : hint_roughness_r,filter_linear_mipmap,repeat_enable;
-uniform float specular;
-uniform float metallic;
-varying vec3 uv1_triplanar_pos;
-uniform float uv1_blend_sharpness;
-varying vec3 uv1_power_normal;
-uniform vec3 uv1_scale;
-uniform vec3 uv1_offset;
-uniform vec3 uv2_scale;
-uniform vec3 uv2_offset;
-
-
-void vertex() {
-	TANGENT = vec3(0.0,0.0,-1.0) * abs(NORMAL.x);
-	TANGENT+= vec3(1.0,0.0,0.0) * abs(NORMAL.y);
-	TANGENT+= vec3(1.0,0.0,0.0) * abs(NORMAL.z);
-	TANGENT = normalize(TANGENT);
-	BINORMAL = vec3(0.0,1.0,0.0) * abs(NORMAL.x);
-	BINORMAL+= vec3(0.0,0.0,-1.0) * abs(NORMAL.y);
-	BINORMAL+= vec3(0.0,1.0,0.0) * abs(NORMAL.z);
-	BINORMAL = normalize(BINORMAL);
-	uv1_power_normal=pow(abs(NORMAL),vec3(uv1_blend_sharpness));
-	uv1_triplanar_pos = VERTEX * uv1_scale + uv1_offset;
-	uv1_power_normal/=dot(uv1_power_normal,vec3(1.0));
-	uv1_triplanar_pos *= vec3(1.0,-1.0, 1.0);
-}
-
-vec4 triplanar_texture(sampler2D p_sampler,vec3 p_weights,vec3 p_triplanar_pos) {
-	vec4 samp=vec4(0.0);
-	samp+= texture(p_sampler,p_triplanar_pos.xy) * p_weights.z;
-	samp+= texture(p_sampler,p_triplanar_pos.xz) * p_weights.y;
-	samp+= texture(p_sampler,p_triplanar_pos.zy * vec2(-1.0,1.0)) * p_weights.x;
-	return samp;
-}
-
-void fragment() {
-	vec4 albedo_tex = triplanar_texture(texture_albedo,uv1_power_normal,uv1_triplanar_pos);
-	ALBEDO = (albedo.rgb * albedo_tex.r) + albedo_tex.g + albedo_tex.b;
-	float metallic_tex = dot(triplanar_texture(texture_metallic,uv1_power_normal,uv1_triplanar_pos),metallic_texture_channel);
-	METALLIC = metallic_tex * metallic;
-	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
-	float roughness_tex = dot(triplanar_texture(texture_roughness,uv1_power_normal,uv1_triplanar_pos),roughness_texture_channel);
-	ROUGHNESS = (1.0 - albedo_tex.g) * roughness;
-	SPECULAR = specular;
-}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_62u37"]
-render_priority = 0
-shader = SubResource("Shader_cwof1")
-shader_parameter/albedo = Color(0, 0.67451, 0, 1)
-shader_parameter/point_size = 1.0
-shader_parameter/roughness = 0.5
-shader_parameter/metallic_texture_channel = null
-shader_parameter/specular = 0.5
-shader_parameter/metallic = 0.0
-shader_parameter/uv1_blend_sharpness = 1.0
-shader_parameter/uv1_scale = Vector3(0.5, 0.5, 0.5)
-shader_parameter/uv1_offset = Vector3(1, 0.5, 0.5)
-shader_parameter/uv2_scale = Vector3(1, 1, 1)
-shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/texture_albedo = ExtResource("3_yfwkt")
-shader_parameter/texture_roughness = ExtResource("3_yfwkt")
-
-[sub_resource type="PrismMesh" id="PrismMesh_rutao"]
-material = SubResource("ShaderMaterial_62u37")
-left_to_right = 0.0
-size = Vector3(8, 2, 2)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_j6kcl"]
-data = PackedVector3Array(-4, 1, 1, 4, -1, 1, -4, -1, 1, -4, 1, -1, -4, -1, -1, 4, -1, -1, -4, 1, 1, -4, 1, -1, 4, -1, 1, -4, 1, -1, 4, -1, -1, 4, -1, 1, -4, 1, -1, -4, 1, 1, -4, -1, -1, -4, 1, 1, -4, -1, 1, -4, -1, -1, -4, -1, 1, 4, -1, 1, -4, -1, -1, 4, -1, 1, 4, -1, -1, -4, -1, -1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m0toc"]
 
@@ -185,17 +101,6 @@ text = "VOTING 2024 SIMULATOR 3D"
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Back Wall/Middle School Logo"]
 transform = Transform3D(1, 0, 1.32312e-07, 0, 1, 0, -8.5758e-08, 0, 1, 3.42436, -1.79506, 1.41619)
 mesh = SubResource("TextMesh_mvhe7")
-
-[node name="Ramp" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0, 0)
-visible = false
-mesh = SubResource("PrismMesh_rutao")
-skeleton = NodePath("../Back Wall")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Ramp"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ramp/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_j6kcl")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("4_liofc")]
 transform = Transform3D(-0.981192, 0, -0.193036, 0, 1, 0, 0.193036, 0, -0.981192, 0, 0, -0.15181)
@@ -306,13 +211,13 @@ transform = Transform3D(1, 0, -3.37399e-09, 0, 1, 0, 1.90712e-09, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_m0toc")
 
 [node name="Elderly Man" parent="." instance=ExtResource("11_e2fnu")]
-transform = Transform3D(0.364121, 0, 1.14342, 0, 1.2, 0, -1.14342, 0, 0.364121, -7.78383, -0.0933135, 5.60337)
+transform = Transform3D(0.364121, 0, 1.14342, 0, 1.2, 0, -1.14342, 0, 0.364121, -7.78383, 0.0216732, 5.60337)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Elderly Man"]
-transform = Transform3D(1, 0, 8.48309e-09, 0, 1, 0, 5.41655e-09, 0, 1, 0.439101, 0.49749, 1.30005)
+transform = Transform3D(1, 0, 8.48309e-09, 0, 1, 0, 5.41655e-09, 0, 1, 0.411936, -0.159286, 0.0956311)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Elderly Man/StaticBody3D"]
-transform = Transform3D(1, 0, -3.37399e-09, 0, 1, 0, 1.90712e-09, 0, 1, 0, 0, 0)
+transform = Transform3D(0.625054, 0, 2.97368e-08, 0, 0.999999, 0, -4.74137e-08, 0, 0.81829, 0, 0, 0)
 shape = SubResource("BoxShape3D_m0toc")
 
 [node name="Flag 1" parent="." instance=ExtResource("12_gbgfq")]
@@ -335,13 +240,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.154079, 0.478334, 11.8941)
 transform = Transform3D(1, 0, -3.37399e-09, 0, 1, 0, 1.90712e-09, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_m0toc")
 
-[node name="AuxScene" parent="." instance=ExtResource("14_202o1")]
+[node name="Suicide Booth" parent="." instance=ExtResource("14_202o1")]
 transform = Transform3D(-0.0449988, -0.000326731, -1.80141e-06, 3.7463e-11, -0.000248106, 0.0449993, -0.000326735, 0.0449981, 0.0002481, -7.39733, 1.51387, -7.10185)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="AuxScene"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Suicide Booth"]
 transform = Transform3D(1, -1.14346e-09, -6.16916e-12, 1.35207e-10, 1, -4.63108e-11, 7.78697e-13, -9.42801e-10, 1, 0, -0.0264893, 4.80272)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AuxScene/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Suicide Booth/StaticBody3D"]
 transform = Transform3D(1, 0, -3.37399e-09, 0, 1, 0, 1.90712e-09, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_m0toc")
 
