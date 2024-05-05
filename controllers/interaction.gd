@@ -3,31 +3,20 @@ extends RayCast3D
 var current_collider
 
 # Get the InteractionLabel node inside the UI node
-@onready var interaction_label = get_node("UI/InteractionLabel")
+#@onready var interaction_label = get_node("UI/InteractionLabel")
 
 @onready var prompt_node = get_node("Prompt")
 
 func _ready():
+	set_interaction_text("")
 	add_exception(owner)
-	prompt_node.visible = false
+	#prompt_node.visible = false
 	#interaction_label.visible = false
-	#set_interaction_text("Hello")
 	#print(interaction_label)
 	#interaction_label.visible = false
 	
 
-func _physics_process(_delta):
-	if is_colliding():
-		prompt_node.visible = true
-		#interaction_label.visible = true
-	else:
-		prompt_node.visible = false
-		#interaction_label.visible = false
-		#interaction_label.visible(true)
-		#print("Press E To Interact")
-		#interaction_label.set_text("Press E To Interact")
-		#interaction_label.show()
-	
+func _process(delta):
 	var collider = get_collider()
 	
 	if is_colliding() and collider is Interactable:
@@ -41,17 +30,28 @@ func _physics_process(_delta):
 		
 		elif current_collider:
 			current_collider = null
+			set_interaction_text("")
+	
+	if !is_colliding():
+		prompt_node.visible = false
+		#interaction_label.visible = false
+		#interaction_label.visible(true)
+		#print("Press E To Interact")
+		#interaction_label.set_text("Press E To Interact")
+		#interaction_label.show()
+	
+	
 	
 func set_interaction_text(text):
 	if !text: 
-		prompt_node.set_text("")
-		prompt_node.visible(false)
+		prompt_node.text = ""
+		prompt_node.visible = false 
 		#interaction_label.set_text("")
 		#interaction_label.visible(false)
 	else:
 		var interact_key = InputMap.get_actions().find("Interact")
-		prompt_node.set_text("Press %s to %s" % [interact_key, text])
-		prompt_node.visible(true)
+		prompt_node.text = ("%s" % [text])
+		prompt_node.visible = true
 		
 		#interaction_label.set_text("Press %s to %s" % [interact_key, text])
 		#interaction_label.visible(true)

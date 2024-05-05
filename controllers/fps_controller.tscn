@@ -31,8 +31,8 @@ update_mode = 1
 enable_shadows = true
 
 [node name="InteractionRaycast" type="RayCast3D" parent="CameraController/Camera3D"]
-target_position = Vector3(2.08165e-12, 2.08165e-12, -4)
-collision_mask = 3
+target_position = Vector3(2.08165e-12, 2.08165e-12, -2.5)
+collision_mask = 2
 script = ExtResource("3_wmuyg")
 
 [node name="Prompt" type="Label" parent="CameraController/Camera3D/InteractionRaycast"]
