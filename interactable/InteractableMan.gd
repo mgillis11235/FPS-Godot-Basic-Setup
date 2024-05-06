@@ -12,7 +12,7 @@ extends Interactable
 @onready var lipstick3 = $"../lipstick3"
 @onready var lipstick4 = $"../lipstick4"
 @onready var explosion_node = get_node("explosion_vfx")
-@onready var explosion_sound = preload("res://audio/explosion.mp3")
+@onready var explosion_sound = load("res://audio/explosion.mp3")
 
 func _ready():
 	pass

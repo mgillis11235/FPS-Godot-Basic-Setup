@@ -15,7 +15,7 @@ func _process(delta):
 		add_sibling(instance)
 		instance.global_position = Vector3(-7.8,1.66,5.71 )
 		
-		await get_tree().create_timer(1.0).timeout
+		await get_tree().create_timer(.5).timeout
 
 		instance.queue_free() 
 		awaiting_particles = false

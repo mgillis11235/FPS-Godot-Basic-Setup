@@ -22,15 +22,15 @@ func _process(delta):
 	if is_colliding() and collider is Interactable:
 		if current_collider != collider:
 			set_interaction_text(collider.get_interaction_text())
-			current_collider = collider
 			
-			if Input.is_action_just_pressed("Interact"):
-				collider.interact()
-				set_interaction_text(collider.get_interaction_text())
+		if Input.is_action_just_pressed("Interact"):
+			current_collider = collider
+			collider.interact()
+			set_interaction_text(collider.get_interaction_text())
 		
-		elif current_collider:
-			current_collider = null
-			set_interaction_text("")
+	elif current_collider: 
+		current_collider = null
+		set_interaction_text("")
 	
 	if !is_colliding():
 		prompt_node.visible = false
