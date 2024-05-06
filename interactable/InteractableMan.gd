@@ -11,8 +11,6 @@ extends Interactable
 @onready var lipstick2 = $"../lipstick2"
 @onready var lipstick3 = $"../lipstick3"
 @onready var lipstick4 = $"../lipstick4"
-@onready var kiss_counter = 0
-@onready var explosion_scene = preload("res://levels/vfx_explosion.tscn")
 @onready var explosion_node = get_node("explosion_vfx")
 @onready var explosion_sound = preload("res://audio/explosion.mp3")
 
@@ -26,28 +24,24 @@ func get_interaction_text():
 func interact():
 	on = !on
 	
-	kiss_counter += 1
+	Globals.kiss_counter += 1
 	%kissy.play()
 	
-	if kiss_counter == 1:
+	if Globals.kiss_counter == 1:
 		lipstick.visible = true
 		#vfx_instance.set_process(true)
-	if kiss_counter == 2:
+	if Globals.kiss_counter == 2:
 		lipstick2.visible = true
-	if kiss_counter == 3:
+	if Globals.kiss_counter == 3:
 		lipstick3.visible = true
-	if kiss_counter == 4:
+	if Globals.kiss_counter == 4:
 		lipstick4.visible = true
-	if kiss_counter == 5:
-		set_process(true)
+	if Globals.kiss_counter == 5:
+		#set_process(true)
 		%explosion.play()
 		#var explosion_instance = add_sibling(explosion_scene)
 		# Load the scene resource
 		#explosion_node.paused = false
-		var instance = explosion_scene.instantiate()
-	
-		add_sibling(instance)
-		instance.global_position = Vector3(-7.8,1.66,5.71 )
 		#instance.position = position
 		#get_tree().add_child(instance)
 		print("this running")

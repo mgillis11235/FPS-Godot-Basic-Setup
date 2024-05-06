@@ -404,8 +404,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8207, 0.182119, 4.07173)
 transform = Transform3D(0.110294, 0, -1.18829, 0, 1.22346, 0, 0.972411, 0, 0.134779, 11.7817, -0.234787, 13.1077)
 
 [node name="explosion_vfx" parent="." instance=ExtResource("16_abcit")]
-transform = Transform3D(0.364121, 0, 1.14342, 0, 1.4068, 0, -1.14342, 0, 0.364121, -7.88297, 1.66525, 5.71422)
-script = null
+transform = Transform3D(0.364121, 0, 1.14342, 0, 1.4068, 0, -1.14342, 0, 0.364121, 28.6449, 1.49166, 5.71422)
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3

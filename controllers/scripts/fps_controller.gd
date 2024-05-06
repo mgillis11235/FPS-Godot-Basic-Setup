@@ -31,7 +31,7 @@ func _input(event):
 		
 func _update_camera(delta):
 	
-	# Rotates camera using euler rotation
+	# Rotates cwdwwamera using euler rotation
 	_mouse_rotation.x += _tilt_input * delta
 	_mouse_rotation.x = clamp(_mouse_rotation.x, TILT_LOWER_LIMIT, TILT_UPPER_LIMIT)
 	_mouse_rotation.y += _rotation_input * delta
