@@ -18,7 +18,7 @@ func get_interaction_text():
 func interact():
 	on = !on
 	set_flag_energy()
-	
+	%failure.play()
 		
 
 func set_flag_energy():
