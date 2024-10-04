@@ -655,7 +655,36 @@ shape = SubResource("CylinderShape3D_aq540")
 unique_name_in_owner = true
 stream = ExtResource("60_emkss")
 
+[node name="ColorRect" type="ColorRect" parent="newspaper box"]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="newspaper box/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -173.0
+offset_top = -67.0
+offset_right = 132.0
+offset_bottom = 78.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "CLICK TO START"
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.4601, 0)
+
 [connection signal="finished" from="Red Button/bombvideo" to="UI" method="_on_bombvideo_finished"]
 [connection signal="finished" from="Red Button/bombvideo" to="happyhalloween" method="_on_bombvideo_finished"]
 [connection signal="finished" from="Red Button/bombvideo" to="evillaughter" method="_on_bombvideo_finished"]
 [connection signal="finished" from="Red Button/bombvideo" to="wolfhowling" method="_on_bombvideo_finished"]
+[connection signal="pressed" from="newspaper box/ColorRect/Button" to="CharacterBody3D" method="_on_button_pressed"]

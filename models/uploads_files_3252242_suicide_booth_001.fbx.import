@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dlelmylfjrctb"
-path="res://.godot/imported/us_flag_on_pole.glb-e0467ee4e8311509479b384f8bded215.scn"
+uid="uid://cqrvjjgjwnolr"
+path="res://.godot/imported/uploads_files_3252242_suicide_booth_001.fbx-8f523e0e20be0ab6532da428ffed89f3.scn"
 
 [deps]
 
-source_file="res://models/us_flag_on_pole.glb"
-dest_files=["res://.godot/imported/us_flag_on_pole.glb-e0467ee4e8311509479b384f8bded215.scn"]
+source_file="res://models/uploads_files_3252242_suicide_booth_001.fbx"
+dest_files=["res://.godot/imported/uploads_files_3252242_suicide_booth_001.fbx-8f523e0e20be0ab6532da428ffed89f3.scn"]
 
 [params]
 
@@ -27,10 +27,11 @@ meshes/force_disable_compression=false
 skins/use_named_skins=true
 animation/import=true
 animation/fps=30
-animation/trimming=false
+animation/trimming=true
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={}
-gltf/naming_version=1
-gltf/embedded_image_handling=1
+fbx/importer=0
+fbx/allow_geometry_helper_nodes=false
+fbx/embedded_image_handling=1

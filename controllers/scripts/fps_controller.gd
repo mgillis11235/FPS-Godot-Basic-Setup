@@ -48,9 +48,10 @@ func _update_camera(delta):
 	_tilt_input = 0.0
 	
 func _ready():
-
+	
+	pass
 	# Get mouse input
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _physics_process(delta):
 	
@@ -79,3 +80,9 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+
+
+func _on_button_pressed():
+	
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	%ColorRect.visible = false
