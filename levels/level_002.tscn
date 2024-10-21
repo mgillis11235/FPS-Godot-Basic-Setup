@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://ckm4sclxuidlc"]
+[gd_scene load_steps=40 format=3 uid="uid://b1yleqbb8tc7x"]
 
 [ext_resource type="PackedScene" uid="uid://btv0a42cgxt8g" path="res://levels/WE_test.tscn" id="1_db21n"]
 [ext_resource type="Material" uid="uid://cn1gsy15bkaff" path="res://materials/grid.tres" id="2_x5xie"]
@@ -12,11 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://4vbmgdx2egjy" path="res://textures/WDL-logo@2x.png" id="9_e0424"]
 [ext_resource type="ArrayMesh" uid="uid://cergqjja5mw6w" path="res://models/voting_machine_usa_obj/voting_machine_02_obj.obj" id="10_anu6c"]
 [ext_resource type="PackedScene" uid="uid://b0mw3f0gppx8f" path="res://models/an_elderly_man.glb" id="11_e2fnu"]
-[ext_resource type="Script" path="res://interactable/InteractableBasketballs.gd" id="11_xxbrg"]
-[ext_resource type="AudioStream" uid="uid://cw6ex305grlo1" path="res://audio/tada.mp3" id="12_7mpdk"]
 [ext_resource type="PackedScene" uid="uid://dlelmylfjrctb" path="res://models/us_flag_on_pole.glb" id="12_gbgfq"]
 [ext_resource type="Script" path="res://interactable/InteractableMan.gd" id="13_bw8cs"]
-[ext_resource type="Texture2D" uid="uid://b0w5dwcfxm4ir" path="res://textures/mrbasketball.png" id="13_kkufp"]
 [ext_resource type="PackedScene" uid="uid://bwvcxk0kgn8j7" path="res://models/nuclear_bomb_stylized_lowpoly(1).glb" id="13_lokba"]
 [ext_resource type="AudioStream" uid="uid://7pmrkly0608s" path="res://audio/kissy.mp3" id="13_pp15t"]
 [ext_resource type="PackedScene" uid="uid://bjyk2wy4hkwcg" path="res://models/suicide booth/ImageToStl.com_uploads_files_3252242_suicide_booth_001.gltf" id="14_202o1"]
@@ -173,7 +170,7 @@ offset_bottom = 23.0
 text = "VOTING 2024 SIMULATOR 3D"
 
 [node name="Pile of Basketballs" parent="." instance=ExtResource("9_3wnkn")]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -7.74396, 0.753473, 1.39787)
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -7.74396, 0.662778, 1.39787)
 
 [node name="Sketchfab_Scene" parent="Pile of Basketballs" instance=ExtResource("9_3wnkn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.795614, -1.79889, 0.619616)
@@ -193,24 +190,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.289453, -0.718797, -1.9485
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27365, -0.562537, 2.1118)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Pile of Basketballs"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.395994, -0.0306423, 0.0746446)
-collision_layer = 2
-script = ExtResource("11_xxbrg")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.395994, -1.41379, -0.516191)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pile of Basketballs/StaticBody3D"]
 transform = Transform3D(1, 0, -3.37399e-09, 0, 1, 0, 1.90712e-09, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_m0toc")
-
-[node name="tada" type="AudioStreamPlayer" parent="Pile of Basketballs"]
-unique_name_in_owner = true
-stream = ExtResource("12_7mpdk")
-volume_db = -16.175
-
-[node name="mrbasketball" type="Sprite3D" parent="Pile of Basketballs"]
-unique_name_in_owner = true
-transform = Transform3D(0.0139273, 0, -0.999903, 0, 1, 0, 0.999903, 0, 0.0139273, -2.41956, 0, 0)
-visible = false
-texture = ExtResource("13_kkufp")
 
 [node name="VotingMachine 1" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.00290129, 0, 0.0197884, 0, 0.02, 0, -0.0197884, 0, -0.00290129, -8.27001, 1.04679, -4.80987)
@@ -218,7 +202,6 @@ mesh = ExtResource("10_anu6c")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="VotingMachine 1"]
 transform = Transform3D(1, 0, -1.88744e-08, 0, 1, 0, 1.38451e-08, 0, 1, -0.154053, 12.7235, 11.8941)
-collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="VotingMachine 1/StaticBody3D"]
 transform = Transform3D(1, 0, -3.37399e-09, 0, 1, 0, 1.90712e-09, 0, 1, 0, 0, 0)
@@ -230,7 +213,6 @@ mesh = ExtResource("10_anu6c")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="VotingMachine 2"]
 transform = Transform3D(1, 0, -1.88744e-08, 0, 1, 0, 1.38451e-08, 0, 1, -0.154083, 19.6628, 11.8941)
-collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="VotingMachine 2/StaticBody3D"]
 transform = Transform3D(1, 0, -3.37399e-09, 0, 1, 0, 1.90712e-09, 0, 1, 0, 0, 0)
@@ -241,8 +223,7 @@ transform = Transform3D(-0.00290129, 0, 0.0197884, 0, 0.02, 0, -0.0197884, 0, -0
 mesh = ExtResource("10_anu6c")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="VotingMachine 3"]
-transform = Transform3D(0.984078, 0.140701, 0.108591, -0.140701, 0.243429, 0.959659, 0.108591, -0.959659, 0.25935, -6.32117, 19.3374, 12.3193)
-collision_layer = 2
+transform = Transform3D(1, 0, -2.70101e-08, 0, 1, 0, 1.38451e-08, 0, 1, 111.29, 19.3374, 29.5629)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="VotingMachine 3/StaticBody3D"]
 transform = Transform3D(1, 0, -3.37399e-09, 0, 1, 0, 1.90712e-09, 0, 1, 0, 0, 0)
