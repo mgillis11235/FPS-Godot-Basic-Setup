@@ -12,9 +12,12 @@ config_version=5
 
 config/name="001 - Basic Setup"
 <<<<<<< HEAD
+<<<<<<< HEAD
 run/main_scene="res://level_002.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 =======
+=======
+>>>>>>> parent of 58fda28 (Finishing everything)
 run/main_scene="res://levels/level_002.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 >>>>>>> parent of 58fda28 (Finishing everything)
