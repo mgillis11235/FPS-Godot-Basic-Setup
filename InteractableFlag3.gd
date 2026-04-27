@@ -1,25 +1,24 @@
 extends Interactable
 
-@export var hoop2 : NodePath
+@export var flag1 : NodePath
 @export var on_by_default = true
 
 @export var energy_when_on = 1
 @export var energy_when_off = 0
 
-@onready var hoop2_node = get_node(hoop2)
+@onready var flag_node = get_node(flag1)
 @onready var on = on_by_default
 
 func _ready():
-	pass
-	
+	set_flag_energy()
+
 func get_interaction_text(): 
-	return "Press E To Shoot Ballot Through Hoop" if on else "You're on fire!!!! Like Tim Duncan!!!"
+	return "Press E To Vote For Flag" if on else "No! Stop it! Goddamnit! Stop voting for the flags!"
 
 func interact():
 	on = !on
 	set_flag_energy()
-	%swish.play()
-	
+	%failure.play()
 		
 
 func set_flag_energy():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://ckm4sclxuidlc"]
+[gd_scene load_steps=87 format=3 uid="uid://ckm4sclxuidlc"]
 
 [ext_resource type="PackedScene" uid="uid://btv0a42cgxt8g" path="res://levels/WE_test.tscn" id="1_db21n"]
 [ext_resource type="Material" uid="uid://cn1gsy15bkaff" path="res://materials/grid.tres" id="2_x5xie"]
@@ -38,6 +38,9 @@
 [ext_resource type="Script" path="res://levels/UI.gd" id="20_mutox"]
 [ext_resource type="Script" path="res://interactable/InteractableHoop.gd" id="25_qh7qa"]
 [ext_resource type="AudioStream" uid="uid://t3whgs6s65gl" path="res://audio/erro.mp3" id="29_0wdmp"]
+[ext_resource type="Script" path="res://InteractableMasturbate.gd" id="30_cnuif"]
+[ext_resource type="Script" path="res://InteractableFlag3.gd" id="31_5umuf"]
+[ext_resource type="AudioStream" uid="uid://duhli2uh2e8ls" path="res://audio/masturbate4.wav" id="31_aqxys"]
 [ext_resource type="Script" path="res://InteractablesSuicide.gd" id="32_yqpxy"]
 [ext_resource type="Script" path="res://InteractableStickers.gd" id="35_5dnu8"]
 [ext_resource type="Script" path="res://interactable/InteractablesBomb.gd" id="35_jpit6"]
@@ -227,6 +230,7 @@ transform = Transform3D(0.200497, 0, -0.979694, 0, 1, 0, 0.979694, 0, 0.200497, 
 texture = ExtResource("7_ygldl")
 
 [node name="Label" type="Label" parent="Sprite3D"]
+visible = false
 offset_right = 223.0
 offset_bottom = 23.0
 text = "VOTING 2024 SIMULATOR 3D"
@@ -241,9 +245,10 @@ visible = false
 texture = ExtResource("7_ygldl")
 
 [node name="Label" type="Label" parent="Sprite3D2"]
+visible = false
 offset_right = 223.0
 offset_bottom = 23.0
-text = "VOTING 2024 SIMULATOR 3D"
+text = "ONION VOTING SIMULATOR 3D"
 
 [node name="Pile of Basketballs" parent="." instance=ExtResource("9_3wnkn")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -7.74396, 0.753473, 1.39787)
@@ -391,6 +396,27 @@ shape = SubResource("CylinderShape3D_50dui")
 unique_name_in_owner = true
 stream = ExtResource("29_0wdmp")
 
+[node name="Masturbate" parent="Flag 1" instance=ExtResource("12_gbgfq")]
+transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, 17.4076, 0.155009, -13.7135)
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Flag 1/Masturbate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.76837e-07, 0, 0)
+collision_layer = 2
+script = ExtResource("30_cnuif")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Flag 1/Masturbate/StaticBody3D"]
+transform = Transform3D(1, 0, -3.37399e-09, 0, 1, 0, 1.90712e-09, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_50dui")
+
+[node name="failure" type="AudioStreamPlayer" parent="Flag 1/Masturbate"]
+stream = ExtResource("29_0wdmp")
+
+[node name="masturbate" type="AudioStreamPlayer" parent="Flag 1/Masturbate"]
+unique_name_in_owner = true
+stream = ExtResource("31_aqxys")
+volume_db = -5.0
+
 [node name="Flag 2" parent="." instance=ExtResource("12_gbgfq")]
 transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, -7.10517, 0.182504, -9.09661)
 
@@ -400,6 +426,30 @@ collision_layer = 2
 script = ExtResource("7_k2qik")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Flag 2/StaticBody3D"]
+transform = Transform3D(1, 0, -3.37399e-09, 0, 1, 0, 1.90712e-09, 0, 1, 0.104984, -0.049248, -0.201888)
+shape = SubResource("BoxShape3D_a1mgd")
+
+[node name="Flag 3" parent="." instance=ExtResource("12_gbgfq")]
+transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, -8.0619, 0.182504, 8.95009)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Flag 3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.154079, 0.478334, 0.144444)
+collision_layer = 2
+script = ExtResource("31_5umuf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Flag 3/StaticBody3D"]
+transform = Transform3D(1, 0, -3.37399e-09, 0, 1, 0, 1.90712e-09, 0, 1, 0.104984, -0.049248, -0.201888)
+shape = SubResource("BoxShape3D_a1mgd")
+
+[node name="Flag 3" parent="Flag 3" instance=ExtResource("12_gbgfq")]
+transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, -8.0619, 0.182504, 8.95009)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Flag 3/Flag 3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.154079, 0.478334, 0.144444)
+collision_layer = 2
+script = ExtResource("31_5umuf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Flag 3/Flag 3/StaticBody3D"]
 transform = Transform3D(1, 0, -3.37399e-09, 0, 1, 0, 1.90712e-09, 0, 1, 0.104984, -0.049248, -0.201888)
 shape = SubResource("BoxShape3D_a1mgd")
 
@@ -444,7 +494,7 @@ texture = ExtResource("9_e0424")
 [node name="Label" type="Label" parent="Back Wall2/Middle School Logo"]
 offset_right = 223.0
 offset_bottom = 23.0
-text = "VOTING 2024 SIMULATOR 3D"
+text = "ONION VOTING SIMULATOR 3D"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Back Wall2/Middle School Logo"]
 transform = Transform3D(0.999999, 0, 1.08829e-07, 0, 1, 0, -1.01221e-07, 0, 0.999999, 0.398282, -1.14195, 2.06468)
@@ -502,11 +552,11 @@ texture = ExtResource("17_dgsfm")
 transform = Transform3D(0.059041, -0.0106621, 0.000689043, -0.000709232, -5.01213e-05, 0.0599958, -0.0106607, -0.059045, -0.000175351, 0.22229, 1.01183, -0.425133)
 texture = ExtResource("17_dgsfm")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Table"]
+[node name="Stickers" type="StaticBody3D" parent="Table"]
 collision_layer = 2
 script = ExtResource("35_5dnu8")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Table/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Table/Stickers"]
 shape = SubResource("SphereShape3D_gytki")
 
 [node name="sirens" type="AudioStreamPlayer" parent="Table"]

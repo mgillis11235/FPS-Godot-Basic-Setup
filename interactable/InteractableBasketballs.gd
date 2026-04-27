@@ -15,7 +15,7 @@ func _ready():
 		mrbasketballs.visible = false
 	
 func get_interaction_text(): 
-	return "Press E To Vote For Basketball" if on else "Congratulations, you elected Mr. Basketball as president!"
+	return "Press E To Vote For Basketball" if on else "Congratulations, you elected Mr. Basketball as senator!"
 
 func interact():
 	on = !on
