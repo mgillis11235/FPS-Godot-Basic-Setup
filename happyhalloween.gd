@@ -12,4 +12,5 @@ func _process(delta):
 
 
 func _on_bombvideo_finished():
-	%happyhalloween.play()
+	pass
+	#%happyhalloween.play()

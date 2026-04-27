@@ -13,13 +13,15 @@ func _ready():
 	set_flag_energy()
 
 func get_interaction_text(): 
-	return "Press E To Quietly Masturbate in Corner" if on else "Mmm...!"
+	return "Press E To Quietly Masturbate in Corner" if on else "...!"
 
 func interact():
 	on = !on
 	set_flag_energy()
+	%doomguy.volume_db = -25
 	%soundtrack.stop()
 	%masturbate.play()
+	%masturbate2.play()
 	await get_tree().create_timer(0.1).timeout
 	%damage.visible = true
 	%doomguy.play()
@@ -55,11 +57,12 @@ func interact():
 	%doomguy.play()
 	await get_tree().create_timer(0.1).timeout
 	%damage.visible = false
-	%swish.play()
-	%success1.play()
+	#%swish.play()
+	#%success1.play()
 	await get_tree().create_timer(2).timeout
 	%soundtrack.play()
-		
+	
+	%doomguy.volume_db = 0
 
 func set_flag_energy():
 	pass	

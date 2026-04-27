@@ -13,7 +13,7 @@ func _ready():
 	set_flag_energy()
 
 func get_interaction_text(): 
-	return "Press E To Vote For Flag" if on else "This isn't a special secret flag you can vote for, you fucking loser."
+	return "Press E To Vote For Special Secret Flag" if on else "Fuck off."
 
 func interact():
 	on = !on

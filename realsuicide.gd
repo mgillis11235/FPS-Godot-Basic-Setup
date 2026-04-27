@@ -17,7 +17,7 @@ func trigger_red_fade_and_quit():
 	
 	tween = create_tween()
 	tween.tween_property(overlay, "color:a", 1.0, 8.0)
-	tween.tween_callback(func(): get_tree().quit())
+	tween.tween_callback(func(): get_tree().reload_current_scene())
 	
 func _ready():
 	set_flag_energy()

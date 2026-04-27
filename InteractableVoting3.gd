@@ -23,7 +23,7 @@ func interact():
 	if Globals.votes_counter == 2:
 		%success1.play()
 	if Globals.votes_counter == 3:
-		%success2.play()
+		%success1.play()
 	if Globals.votes_counter > 3:
 		%success1.play()
 	

@@ -13,7 +13,7 @@ func _ready():
 	pass
 	
 func get_interaction_text(): 
-	return "Press E To Shoot Ballot Through Hoop" if on else "You're on fire!!!! Like Tim Duncan!!!"
+	return "Press E To Shoot Ballot Through Hoop" if on else "You're on fire!!!!"
 
 func interact():
 	on = !on

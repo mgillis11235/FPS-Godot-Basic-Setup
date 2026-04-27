@@ -13,4 +13,4 @@ func _process(delta):
 
 func _on_bombvideo_finished():
 	await get_tree().create_timer(3).timeout
-	%evillaughter.play()
+	#%evillaughter.play()
