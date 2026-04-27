@@ -786,13 +786,11 @@ mesh = SubResource("BoxMesh_gd0ev")
 skeleton = NodePath("../../Floor")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="HellFloor2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HellFloor2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_oahyi")
 
 [node name="Area3D" type="Area3D" parent="HellFloor2/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("67_68b38")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HellFloor2/StaticBody3D/Area3D"]
