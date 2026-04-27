@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://ckm4sclxuidlc"]
+[gd_scene load_steps=94 format=3 uid="uid://ckm4sclxuidlc"]
 
 [ext_resource type="PackedScene" uid="uid://btv0a42cgxt8g" path="res://levels/WE_test.tscn" id="1_db21n"]
 [ext_resource type="Material" uid="uid://cn1gsy15bkaff" path="res://materials/grid.tres" id="2_x5xie"]
@@ -42,6 +42,7 @@
 [ext_resource type="Script" path="res://InteractableFlag3.gd" id="31_5umuf"]
 [ext_resource type="AudioStream" uid="uid://duhli2uh2e8ls" path="res://audio/masturbate4.wav" id="31_aqxys"]
 [ext_resource type="Script" path="res://InteractablesSuicide.gd" id="32_yqpxy"]
+[ext_resource type="Script" path="res://InteractableFlag5.gd" id="34_njd06"]
 [ext_resource type="Script" path="res://InteractableStickers.gd" id="35_5dnu8"]
 [ext_resource type="Script" path="res://interactable/InteractablesBomb.gd" id="35_jpit6"]
 [ext_resource type="AudioStream" uid="uid://iqfe2prkc0xt" path="res://audio/sirens.ogg" id="36_20fcf"]
@@ -63,6 +64,12 @@
 [ext_resource type="Texture2D" uid="uid://b0tleq8xomwes" path="res://textures/whiterec.jpg" id="58_o83uq"]
 [ext_resource type="Script" path="res://InteractableNewspaper.gd" id="59_cogyh"]
 [ext_resource type="AudioStream" uid="uid://blmswraqxj8q2" path="res://audio/onion.mp3" id="60_emkss"]
+[ext_resource type="PackedScene" uid="uid://c4w3bgm42wy4m" path="res://models/bathorys_goat.glb" id="65_y7fiw"]
+[ext_resource type="Texture2D" uid="uid://b34w6y7bs5ivs" path="res://models/gomedia.jpg" id="66_sdsnc"]
+[ext_resource type="Script" path="res://hell.gd" id="67_68b38"]
+[ext_resource type="PackedScene" uid="uid://05i5a41n2cyl" path="res://models/generic_demon_-_idle_meshy.glb" id="67_asxsj"]
+[ext_resource type="AudioStream" uid="uid://ciwq5ia7r26f2" path="res://audio/hellsounds.mp3" id="67_df75y"]
+[ext_resource type="Texture2D" uid="uid://dcddng6jag8c2" path="res://models/jim.webp" id="68_euay7"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_gd0ev"]
 material = ExtResource("2_x5xie")
@@ -145,6 +152,7 @@ height = 2.47208
 [node name="Node3D" type="Node3D"]
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("1_db21n")]
+unique_name_in_owner = true
 
 [node name="Floor" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.72847, 0, 0, 0, 1.72847, 0, 0, 0, 1.72847, 0, -0.25, 3.52478)
@@ -157,6 +165,7 @@ shape = SubResource("ConcavePolygonShape3D_oahyi")
 
 [node name="Floor2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+visible = false
 mesh = SubResource("BoxMesh_gd0ev")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Floor2"]
@@ -441,15 +450,15 @@ script = ExtResource("31_5umuf")
 transform = Transform3D(1, 0, -3.37399e-09, 0, 1, 0, 1.90712e-09, 0, 1, 0.104984, -0.049248, -0.201888)
 shape = SubResource("BoxShape3D_a1mgd")
 
-[node name="Flag 3" parent="Flag 3" instance=ExtResource("12_gbgfq")]
+[node name="Flag 5" parent="Flag 3" instance=ExtResource("12_gbgfq")]
 transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, -8.0619, 0.182504, 8.95009)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Flag 3/Flag 3"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Flag 3/Flag 5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.154079, 0.478334, 0.144444)
 collision_layer = 2
-script = ExtResource("31_5umuf")
+script = ExtResource("34_njd06")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Flag 3/Flag 3/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Flag 3/Flag 5/StaticBody3D"]
 transform = Transform3D(1, 0, -3.37399e-09, 0, 1, 0, 1.90712e-09, 0, 1, 0.104984, -0.049248, -0.201888)
 shape = SubResource("BoxShape3D_a1mgd")
 
@@ -705,7 +714,98 @@ shape = SubResource("CylinderShape3D_aq540")
 unique_name_in_owner = true
 stream = ExtResource("60_emkss")
 
+[node name="Sketchfab_Scene" parent="newspaper box" instance=ExtResource("65_y7fiw")]
+transform = Transform3D(0.358591, 0, 2.97849, 0, 3, 0, -2.97849, 0, 0.358591, -3.80904, -104.377, 6.341)
+
+[node name="Sprite3D" type="Sprite3D" parent="newspaper box/Sketchfab_Scene"]
+transform = Transform3D(0.25, 0, -8.88178e-16, 0, 0.25, 0, 8.88178e-16, 0, 0.25, 0, 3.1613, 0)
+texture = ExtResource("66_sdsnc")
+
+[node name="Sketchfab_Scene" parent="newspaper box/Sketchfab_Scene" instance=ExtResource("67_asxsj")]
+transform = Transform3D(0.989526, 0, -0.144356, 0, 1, 0, 0.144356, 0, 0.989526, 4.04752, 0.807362, 1.46746)
+
+[node name="Sketchfab_Scene4" parent="newspaper box/Sketchfab_Scene" instance=ExtResource("67_asxsj")]
+transform = Transform3D(-0.276027, 0, -0.833809, 0, 1, 0, 0.416904, 0, -0.552053, 4.04752, 0.807362, 6.69091)
+
+[node name="Sketchfab_Scene3" parent="newspaper box/Sketchfab_Scene" instance=ExtResource("67_asxsj")]
+transform = Transform3D(0.989526, 0, -0.144356, 0, 1, 0, 0.144356, 0, 0.989526, -3.38356, 0.807362, 1.46746)
+
+[node name="Sketchfab_Scene2" parent="newspaper box/Sketchfab_Scene" instance=ExtResource("67_asxsj")]
+transform = Transform3D(0.155861, 0, 2.00693e-09, 0, 0.155861, 0, -2.00693e-09, 0, 0.155861, 3.78884, 1.86959, 13.4676)
+
+[node name="Sketchfab_Scene2" parent="newspaper box" instance=ExtResource("65_y7fiw")]
+transform = Transform3D(2.98989, 0, 0.410127, 0, 5, 0, -0.246076, 0, 4.98315, 22.1157, -104.377, -13.7726)
+
+[node name="Sprite3D" type="Sprite3D" parent="newspaper box/Sketchfab_Scene2"]
+transform = Transform3D(0.25, 0, -8.88178e-16, 0, 0.25, 0, 8.88178e-16, 0, 0.25, 0, 3.1613, 0)
+texture = ExtResource("66_sdsnc")
+
+[node name="Sketchfab_Scene" parent="newspaper box/Sketchfab_Scene2" instance=ExtResource("67_asxsj")]
+transform = Transform3D(0.989526, 0, -0.144356, 0, 1, 0, 0.144356, 0, 0.989526, 4.04752, 0.807362, 1.46746)
+
+[node name="Sketchfab_Scene4" parent="newspaper box/Sketchfab_Scene2" instance=ExtResource("67_asxsj")]
+transform = Transform3D(-0.276027, 0, -0.833809, 0, 1, 0, 0.416904, 0, -0.552053, 4.04752, 0.807362, 6.69091)
+
+[node name="Sketchfab_Scene3" parent="newspaper box/Sketchfab_Scene2" instance=ExtResource("67_asxsj")]
+transform = Transform3D(0.989526, 0, -0.144356, 0, 1, 0, 0.144356, 0, 0.989526, -3.38356, 0.807362, 1.46746)
+
+[node name="Sketchfab_Scene2" parent="newspaper box/Sketchfab_Scene2" instance=ExtResource("67_asxsj")]
+transform = Transform3D(0.155861, 0, 2.00693e-09, 0, 0.155861, 0, -2.00693e-09, 0, 0.155861, 3.78884, 1.86959, 13.4676)
+
+[node name="Sketchfab_Scene3" parent="newspaper box" instance=ExtResource("65_y7fiw")]
+transform = Transform3D(8.13109, 0, -2.14341, 0, 5, 0, 3.85815, 0, 4.51727, 287.819, -86.641, 18.2164)
+
+[node name="Sprite3D" type="Sprite3D" parent="newspaper box/Sketchfab_Scene3"]
+transform = Transform3D(0.25, 0, -8.88178e-16, 0, 0.25, 0, 8.88178e-16, 0, 0.25, 0, 3.1613, 0)
+visible = false
+texture = ExtResource("66_sdsnc")
+
+[node name="Sprite3D2" type="Sprite3D" parent="newspaper box/Sketchfab_Scene3"]
+transform = Transform3D(0.25, 0, -8.88178e-16, 0, 0.25, 0, 8.88178e-16, 0, 0.25, 0, 3.1613, 0)
+texture = ExtResource("68_euay7")
+
+[node name="Sketchfab_Scene" parent="newspaper box/Sketchfab_Scene3" instance=ExtResource("67_asxsj")]
+transform = Transform3D(0.989526, 0, -0.144356, 0, 1, 0, 0.144356, 0, 0.989526, 4.04752, 0.807362, 1.46746)
+
+[node name="Sketchfab_Scene4" parent="newspaper box/Sketchfab_Scene3" instance=ExtResource("67_asxsj")]
+transform = Transform3D(-0.276027, 0, -0.833809, 0, 1, 0, 0.416904, 0, -0.552053, 4.04752, 0.807362, 6.69091)
+
+[node name="Sketchfab_Scene3" parent="newspaper box/Sketchfab_Scene3" instance=ExtResource("67_asxsj")]
+transform = Transform3D(0.989526, 0, -0.144356, 0, 1, 0, 0.144356, 0, 0.989526, -3.38356, 0.807362, 1.46746)
+
+[node name="Sketchfab_Scene2" parent="newspaper box/Sketchfab_Scene3" instance=ExtResource("67_asxsj")]
+transform = Transform3D(0.155861, 0, 2.00693e-09, 0, 0.155861, 0, -2.00693e-09, 0, 0.155861, 3.78884, 1.86959, 13.4676)
+
+[node name="HellFloor2" type="Node3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, -2.27374e-13, -223.361, 9.61726)
+visible = false
+
+[node name="HellFloor" type="MeshInstance3D" parent="HellFloor2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.27374e-15, 2.38419e-07, 0)
+mesh = SubResource("BoxMesh_gd0ev")
+skeleton = NodePath("../../Floor")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="HellFloor2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HellFloor2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_oahyi")
+
+[node name="Area3D" type="Area3D" parent="HellFloor2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("67_68b38")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HellFloor2/StaticBody3D/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.46008, 0)
+shape = SubResource("ConcavePolygonShape3D_oahyi")
+
+[node name="hellsounds2" type="AudioStreamPlayer" parent="HellFloor2/StaticBody3D/Area3D/CollisionShape3D"]
+unique_name_in_owner = true
+stream = ExtResource("67_df75y")
+parameters/looping = true
+
 [connection signal="finished" from="Red Button/bombvideo" to="UI" method="_on_bombvideo_finished"]
 [connection signal="finished" from="Red Button/bombvideo" to="happyhalloween" method="_on_bombvideo_finished"]
 [connection signal="finished" from="Red Button/bombvideo" to="evillaughter" method="_on_bombvideo_finished"]
 [connection signal="finished" from="Red Button/bombvideo" to="wolfhowling" method="_on_bombvideo_finished"]
+[connection signal="body_entered" from="HellFloor2/StaticBody3D/Area3D" to="HellFloor2/StaticBody3D/Area3D" method="_on_body_entered"]
